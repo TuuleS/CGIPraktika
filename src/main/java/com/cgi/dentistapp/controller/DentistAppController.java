@@ -1,6 +1,8 @@
 package com.cgi.dentistapp.controller;
 
 import com.cgi.dentistapp.dao.entity.VisitEntity;
+import com.cgi.dentistapp.dto.SearchQueryDTO;
+import com.cgi.dentistapp.dto.SearchResultDTO;
 import com.cgi.dentistapp.dto.VisitDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -36,13 +38,6 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         return "form";
     }
 
-    @GetMapping("/calendar")
-    public String showCalendar(VisitDTO visitDTO, Model model) {
-        List<VisitEntity> registrations = visitService.listVisits();
-        model.addAttribute("regs", registrations);
-        return "calendar";
-    }
-
     @PostMapping("/")
     public String postRegisterForm(@Valid VisitDTO visitDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -52,5 +47,29 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         visitService.addVisit(visitDTO.getDentistName(), visitDTO.getDentistVisitTime(), visitDTO.getGpName(), visitDTO.getGpVisitTime());
         return "redirect:/results";
     }
+
+    @GetMapping("/calendar")
+    public String showCalendar(VisitDTO visitDTO, Model model) {
+        List<VisitEntity> registrations = visitService.listVisits();
+        model.addAttribute("regs", registrations);
+        return "calendar";
+    }
+
+    @GetMapping("/search")
+    public String showSearch(SearchQueryDTO queryDTO, Model model) {
+        model.addAttribute("query", queryDTO);
+        return "search";
+    }
+
+    @PostMapping("/search")
+    public String doTheSearch(@Valid SearchQueryDTO query, BindingResult bindingResult, Model model){
+        model.addAttribute("query", query);
+        List<VisitEntity> results = visitService.listVisits(query);
+        model.addAttribute("results", results);
+        return "search";
+    }
+
+
+
 
 }
