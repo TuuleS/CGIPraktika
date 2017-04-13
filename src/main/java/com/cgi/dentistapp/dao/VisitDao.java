@@ -5,21 +5,21 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import com.cgi.dentistapp.dao.entity.DentistVisitEntity;
+import com.cgi.dentistapp.dao.entity.VisitEntity;
 
 import java.util.List;
 
 @Repository
-public class DentistVisitDao {
+public class VisitDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void create(DentistVisitEntity visit) {
+    public void create(VisitEntity visit) {
         entityManager.persist(visit);
     }
 
-    public List<DentistVisitEntity> getAllVisits() {
-        return entityManager.createQuery("SELECT e FROM DentistVisitEntity e").getResultList();
+    public List<VisitEntity> getAllVisits() {
+        return entityManager.createQuery("SELECT e FROM VisitEntity e").getResultList();
     }
 }

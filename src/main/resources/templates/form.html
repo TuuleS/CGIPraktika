@@ -1,16 +1,30 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <body>
-<form action="#" th:action="@{/}" th:object="${dentistVisitDTO}" method="post">
+<form action="#" th:action="@{/}" th:object="${visitDTO}" method="post">
     <table>
         <tr>
-            <td><p th:text="#{arsti.nimi}">arsti.nimi</p></td>
+            <td><p th:text="#{hambaarsti.nimi}">hambaarsti.nimi</p></td>
             <td><input type="text" th:field="*{dentistName}"/></td>
             <td th:if="${#fields.hasErrors('dentistName')}" th:errors="*{dentistName}">Nime viga</td>
         </tr>
         <tr>
-            <td><p th:text="#{visiidi.kuupaev}">visiidi.kuupaev</p></td>
-            <td><input type="text" th:field="*{visitTime}"/></td>
-            <td th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}">Kuupäeva viga</td>
+            <td><p th:text="#{hambavisiidi.kuupaev}">hambavisiidi.kuupaev</p></td>
+            <td><input type="text" th:field="*{dentistVisitTime}"/></td>
+            <td th:if="${#fields.hasErrors('dentistVisitTime')}" th:errors="*{dentistVisitTime}">Kuupäeva viga</td>
+        </tr>
+        <tr>
+            <td><p th:text="#{perearsti.nimi}">perearsti.nimi</p></td>
+            <td><select th:field="*{gpName}">
+                <option value="P. erearst">P. erearst</option>
+                <option value="L. astearst">L. astearst</option>
+                <option value="R. öntgen">R. öntgen</option>
+            </select></td>
+            <td th:if="${#fields.hasErrors('gpName')}" th:errors="*{gpName}">Nime viga</td>
+        </tr>
+        <tr>
+            <td><p th:text="#{perevisiidi.kuupaev}">perevisiidi.kuupaev</p></td>
+            <td><input type="text" th:field="*{gpVisitTime}"/></td>
+            <td th:if="${#fields.hasErrors('gpVisitTime')}" th:errors="*{gpVisitTime}">Kuupäeva viga</td>
         </tr>
         <tr>
             <td>
