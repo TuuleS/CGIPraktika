@@ -35,10 +35,10 @@ public class VisitService {
 
         for (VisitEntity res : allres) {
 
-            int lev1 = distance(res.getDentistName(), query.getDentistName());
-            int lev2 = distance(res.getGpName(), query.getDentistName());
+            int lev1 = distance(res.getDentistName().toLowerCase(), query.getDentistName().toLowerCase());
+            int lev2 = distance(res.getGpName().toLowerCase(), query.getDentistName().toLowerCase());
 
-            if (lev1 <= 3 || lev2 <= 3) {
+            if (lev1 <= 4 || lev2 <= 4) {
                 actualres.add(res);
             }
         }

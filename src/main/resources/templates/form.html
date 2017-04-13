@@ -8,9 +8,8 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-    <!-- Inline CSS based on choices in "Settings" tab -->
-    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>
+
 </head>
 
 <body>
@@ -18,11 +17,11 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid col-md-4 col-md-offset-4">
         <div class="navbar-header">
-            <a class="navbar-brand" th:href="@{/}"  th:text="#{firma.nimi}">firma.nimi</a>
+            <a class="navbar-brand" th:href="@{/}" th:text="#{firma.nimi}">firma.nimi</a>
         </div>
         <ul class="nav navbar-nav">
             <li class="active">
-                <a th:href="@{/}"  th:text="#{registreeru.menuu}">registreeru.menuu</a>
+                <a th:href="@{/}" th:text="#{registreeru.menuu}">registreeru.menuu</a>
             </li>
             <li>
                 <a th:href="@{/calendar}" th:text="#{aja.kava}">aja.kava</a>
@@ -50,7 +49,9 @@
                             hambaarsti.nimi
                         </label>
                         <input class="form-control" id="text2" name="text2" type="text" th:field="*{dentistName}"/>
-                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('dentistName')}" th:errors="*{dentistName}">Nime viga</small>
+                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('dentistName')}"
+                               th:errors="*{dentistName}">Nime viga
+                        </small>
                     </div>
 
                     <div class="form-group ">
@@ -58,7 +59,10 @@
                             hambavisiidi.kuupaev
                         </label>
                         <input class="form-control" id="text" name="text" type="text" th:field="*{dentistVisitTime}"/>
-                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('dentistVisitTime')}" th:errors="*{dentistVisitTime}">Kuupäeva viga</small>
+                        <small class="help-inline" style="color: #737373;"
+                               th:if="${#fields.hasErrors('dentistVisitTime')}" th:errors="*{dentistVisitTime}">Kuupäeva
+                            viga
+                        </small>
                     </div>
 
                     <div class="form-group ">
@@ -76,7 +80,9 @@
                                 K. apsas
                             </option>
                         </select>
-                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('gpName')}" th:errors="*{gpName}">Nime viga</small>
+                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('gpName')}"
+                               th:errors="*{gpName}">Nime viga
+                        </small>
                     </div>
 
                     <div class="form-group ">
@@ -84,11 +90,14 @@
                             perevisiidi.kuupaev
                         </label>
                         <input class="form-control" id="text1" name="text1" type="text" th:field="*{gpVisitTime}"/>
-                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('gpVisitTime')}" th:errors="*{gpVisitTime}">Kuupäeva viga</small>
+                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('gpVisitTime')}"
+                               th:errors="*{gpVisitTime}">Kuupäeva viga
+                        </small>
                     </div>
                     <div class="form-group">
                         <div>
-                            <button class="btn btn-primary " style="background-color: #FFB673;" name="submit"  type="submit" th:text="#{registreeri.visiidile}">
+                            <button class="btn btn-primary " style="background-color: #c0dfd9;" name="submit"
+                                    type="submit" th:text="#{registreeri.visiidile}">
                                 Submit
                             </button>
                         </div>

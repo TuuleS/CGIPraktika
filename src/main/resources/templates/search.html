@@ -9,31 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
     <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>
-    <!-- Inline CSS based on choices in "Settings" tab -->
-    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form {
-        font-family: Arial, Helvetica, sans-serif;
-        color: black
-    }
-
-    .bootstrap-iso form button, .bootstrap-iso form button:hover {
-        color: white !important;
-    }
-
-    .asteriskField {
-        color: red;
-    }</style>
-
-    <script>
-        function retrieveGuests() {
-            var url = '/th-spring-integration/spring/guests';
-
-            if ($('#searchSurname').val() != '') {
-                url = url + '/' + $('#searchSurname').val();
-            }
-
-            $("#resultsBlock").load(url);
-        }
-    </script>
+    <script type="text/javascript" th:src="@{/js/search.js}"></script>
 </head>
 
 <body>
@@ -89,8 +65,9 @@
                     </small>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-6 col-md-offset-3 col-sm-6 col-md-9">
-                        <input type="submit" class="btn btn-default" value="Otsi"/>
+                    <div>
+                        <button type="submit" class="btn btn-primary " style="background-color: #c0dfd9;"
+                                th:text="#{otsi}"></button>
                     </div>
                 </div>
             </form>
@@ -101,18 +78,30 @@
     <div th:if="${results?.size() > 0}">
         <span>
             <div class="container">
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-hover table-striped">
                     <thead class="thead-inverse">
                     <tr>
                         <th th:text="#{hambaarsti.nimi}"></th>
                         <th th:text="#{perearsti.nimi}"></th>
+                        <th th:text="#{detailid}"></th>
+                        <th th:text="#{hambavisiidi.kuupaev.pikk}" style="visibility:collapse;" class = "hidethis"></th>
+                        <th th:text="#{perevisiidi.kuupaev.pikk}" style="visibility:collapse;" class = "hidethis"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="res : ${results}">
-                        <td th:text="${res.getGpName()}"></td>
-                        <td th:text="${res.getDentistName()}"></td>
-                    </tr>
+
+                        <tr th:each="res : ${results}">
+                            <td th:text="${res.getDentistName()}"></td>
+                            <td th:text="${res.getGpName()}"></td>
+                            <td>
+                                <button onclick="toggle();" class="btn btn-primary" style="background-color: #c0dfd9;" th:text="#{detailid}">
+                                    detailid
+                                </button>
+                            </td>
+                            <td class="hidethis" style="visibility:collapse;" th:text="${res.getDentistVisitTime()}"></td>
+                            <td class="hidethis" style="visibility:collapse" th:text="${res.getGpVisitTime()}"></td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -120,6 +109,16 @@
     </div>
 
 </div>
+
+<!--<div th:if="${results?.size() lt 1}">-->
+    <!--<h2 class="col-md-4 col-md-offset-4" th:text="#{tulemusi.pole}">-->
+        <!--tulemusi.pole-->
+        <!--<small th:text="#{tulemusi.pole.tapsustus}">-->
+            <!--tulemusi.pole.tapsustus-->
+        <!--</small>-->
+    <!--</h2>-->
+
+<!--</div>-->
 
 
 </body>
