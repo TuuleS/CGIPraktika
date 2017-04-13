@@ -1,37 +1,101 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+    <!-- Inline CSS based on choices in "Settings" tab -->
+    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+</head>
+
 <body>
-<form action="#" th:action="@{/}" th:object="${visitDTO}" method="post">
-    <table>
-        <tr>
-            <td><p th:text="#{hambaarsti.nimi}">hambaarsti.nimi</p></td>
-            <td><input type="text" th:field="*{dentistName}"/></td>
-            <td th:if="${#fields.hasErrors('dentistName')}" th:errors="*{dentistName}">Nime viga</td>
-        </tr>
-        <tr>
-            <td><p th:text="#{hambavisiidi.kuupaev}">hambavisiidi.kuupaev</p></td>
-            <td><input type="text" th:field="*{dentistVisitTime}"/></td>
-            <td th:if="${#fields.hasErrors('dentistVisitTime')}" th:errors="*{dentistVisitTime}">Kuupäeva viga</td>
-        </tr>
-        <tr>
-            <td><p th:text="#{perearsti.nimi}">perearsti.nimi</p></td>
-            <td><select th:field="*{gpName}">
-                <option value="P. erearst">P. erearst</option>
-                <option value="L. astearst">L. astearst</option>
-                <option value="R. öntgen">R. öntgen</option>
-            </select></td>
-            <td th:if="${#fields.hasErrors('gpName')}" th:errors="*{gpName}">Nime viga</td>
-        </tr>
-        <tr>
-            <td><p th:text="#{perevisiidi.kuupaev}">perevisiidi.kuupaev</p></td>
-            <td><input type="text" th:field="*{gpVisitTime}"/></td>
-            <td th:if="${#fields.hasErrors('gpVisitTime')}" th:errors="*{gpVisitTime}">Kuupäeva viga</td>
-        </tr>
-        <tr>
-            <td>
-                <button type="submit" th:text="#{registreeri.visiidile}"></button>
-            </td>
-        </tr>
-    </table>
-</form>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid col-md-4 col-md-offset-4">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" th:text="#{firma.nimi}">firma.nimi</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="#" th:text="#{registreeru.menuu}">registreeru.menuu</a>
+            </li>
+            <li>
+                <a th:href="@{/calendar}" th:text="#{aja.kava}">aja.kava</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div>
+    <h1 class="page-header col-md-4 col-md-offset-4" th:text="#{aeg.kinni}">
+        aeg.kinni
+    </h1>
+</div>
+
+<div class="bootstrap-iso">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <form action="#" th:action="@{/}" th:object="${visitDTO}" method="post">
+                    <div class="form-group ">
+                        <label class="control-label " for="text2" th:text="#{hambaarsti.nimi}">
+                            hambaarsti.nimi
+                        </label>
+                        <input class="form-control" id="text2" name="text2" type="text" th:field="*{dentistName}"/>
+                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('dentistName')}" th:errors="*{dentistName}">Nime viga</small>
+                    </div>
+
+                    <div class="form-group ">
+                        <label class="control-label " for="text" th:text="#{hambavisiidi.kuupaev}">
+                            hambavisiidi.kuupaev
+                        </label>
+                        <input class="form-control" id="text" name="text" type="text" th:field="*{dentistVisitTime}"/>
+                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('dentistVisitTime')}" th:errors="*{dentistVisitTime}">Kuupäeva viga</small>
+                    </div>
+
+                    <div class="form-group ">
+                        <label class="control-label " for="select" th:text="#{perearsti.nimi}">
+                            perearsti.nimi
+                        </label>
+                        <select class="select form-control" id="select" name="select" th:field="*{gpName}">
+                            <option value="P. Erearst">
+                                P. Erearst
+                            </option>
+                            <option value="M. ikihiir">
+                                M. ikihiir
+                            </option>
+                            <option value="K. apsas">
+                                K. apsas
+                            </option>
+                        </select>
+                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('gpName')}" th:errors="*{gpName}">Nime viga</small>
+                    </div>
+
+                    <div class="form-group ">
+                        <label class="control-label " for="text1" th:text="#{perevisiidi.kuupaev}">
+                            perevisiidi.kuupaev
+                        </label>
+                        <input class="form-control" id="text1" name="text1" type="text" th:field="*{gpVisitTime}"/>
+                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('gpVisitTime')}" th:errors="*{gpVisitTime}">Kuupäeva viga</small>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <button class="btn btn-primary " style="background-color: #FFB673;" name="submit"  type="submit" th:text="#{registreeri.visiidile}">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>

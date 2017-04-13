@@ -83,4 +83,15 @@ public class VisitEntity {
     public void setGpVisitTime(Date gpVisitTime) {
         this.gpVisitTime = gpVisitTime;
     }
+
+    @Override
+    public String toString() {
+        return "VisitEntity{" +
+                "id=" + id +
+                ", dentistVisitTime=" + dentistVisitTime +
+                ", dentistName='" + dentistName + '\'' +
+                ", gpName='" + gpName + '\'' +
+                ", gpVisitTime=" + gpVisitTime +
+                '}';
+    }
 }

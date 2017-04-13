@@ -1,5 +1,6 @@
 package com.cgi.dentistapp.controller;
 
+import com.cgi.dentistapp.dao.entity.VisitEntity;
 import com.cgi.dentistapp.dto.VisitDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -33,6 +34,13 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         List<String> gps = Arrays.asList("H. Mets", "K. Apsas", "M. Elo Nid");
         model.addAttribute("gps", gps);
         return "form";
+    }
+
+    @GetMapping("/calendar")
+    public String showCalendar(VisitDTO visitDTO, Model model) {
+        List<VisitEntity> registrations = visitService.listVisits();
+        model.addAttribute("regs", registrations);
+        return "calendar";
     }
 
     @PostMapping("/")
