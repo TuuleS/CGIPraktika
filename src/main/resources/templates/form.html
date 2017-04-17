@@ -49,7 +49,7 @@
                             hambaarsti.nimi
                         </label>
                         <input class="form-control" id="text2" name="text2" type="text" th:field="*{dentistName}"/>
-                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('dentistName')}"
+                        <small class="help-inline" style="color: #FF8136;" th:if="${#fields.hasErrors('dentistName')}"
                                th:errors="*{dentistName}">Nime viga
                         </small>
                     </div>
@@ -59,7 +59,7 @@
                             hambavisiidi.kuupaev
                         </label>
                         <input class="form-control" id="text" name="text" type="text" th:field="*{dentistVisitTime}"/>
-                        <small class="help-inline" style="color: #737373;"
+                        <small class="help-inline" style="color: #FF8136;"
                                th:if="${#fields.hasErrors('dentistVisitTime')}" th:errors="*{dentistVisitTime}">Kuupäeva
                             viga
                         </small>
@@ -80,7 +80,7 @@
                                 K. apsas
                             </option>
                         </select>
-                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('gpName')}"
+                        <small class="help-inline" style="color: #FF8136;" th:if="${#fields.hasErrors('gpName')}"
                                th:errors="*{gpName}">Nime viga
                         </small>
                     </div>
@@ -90,13 +90,13 @@
                             perevisiidi.kuupaev
                         </label>
                         <input class="form-control" id="text1" name="text1" type="text" th:field="*{gpVisitTime}"/>
-                        <small class="help-inline" style="color: #737373;" th:if="${#fields.hasErrors('gpVisitTime')}"
+                        <small class="help-inline" style="color: #FF8136;" th:if="${#fields.hasErrors('gpVisitTime')}"
                                th:errors="*{gpVisitTime}">Kuupäeva viga
                         </small>
                     </div>
                     <div class="form-group">
                         <div>
-                            <button class="btn btn-primary " style="background-color: #c0dfd9;" name="submit"
+                            <button class="btn btn-primary " style="background-color: #FF5711;" name="submit"
                                     type="submit" th:text="#{registreeri.visiidile}">
                                 Submit
                             </button>
