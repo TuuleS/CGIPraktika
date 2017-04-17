@@ -5,6 +5,8 @@ import java.util.Date;
 
 /**
  * Created by tuules on 13/04/2017.
+ * <p>
+ * Holds essentially a visit entity to be returned as the search result
  */
 public class SearchResultDTO {
 

@@ -84,8 +84,8 @@
                         <th th:text="#{hambaarsti.nimi}"></th>
                         <th th:text="#{perearsti.nimi}"></th>
                         <th th:text="#{detailid}"></th>
-                        <th th:text="#{hambavisiidi.kuupaev.pikk}" style="visibility:collapse;" class = "hidethis"></th>
-                        <th th:text="#{perevisiidi.kuupaev.pikk}" style="visibility:collapse;" class = "hidethis"></th>
+                        <th th:text="#{hambavisiidi.kuupaev.pikk}" style="visibility:collapse;" class="hidethis"></th>
+                        <th th:text="#{perevisiidi.kuupaev.pikk}" style="visibility:collapse;" class="hidethis"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -94,11 +94,13 @@
                             <td th:text="${res.getDentistName()}"></td>
                             <td th:text="${res.getGpName()}"></td>
                             <td>
-                                <button onclick="toggle();" class="btn btn-primary" style="background-color: #FF5711;" th:text="#{detailid}">
+                                <button onclick="toggle();" class="btn btn-primary" style="background-color: #FF5711;"
+                                        th:text="#{detailid}">
                                     detailid
                                 </button>
                             </td>
-                            <td class="hidethis" style="visibility:collapse;" th:text="${res.getDentistVisitTime()}"></td>
+                            <td class="hidethis" style="visibility:collapse;"
+                                th:text="${res.getDentistVisitTime()}"></td>
                             <td class="hidethis" style="visibility:collapse" th:text="${res.getGpVisitTime()}"></td>
                         </tr>
 
@@ -111,12 +113,12 @@
 </div>
 
 <!--<div th:if="${results?.size() lt 1}">-->
-    <!--<h2 class="col-md-4 col-md-offset-4" th:text="#{tulemusi.pole}">-->
-        <!--tulemusi.pole-->
-        <!--<small th:text="#{tulemusi.pole.tapsustus}">-->
-            <!--tulemusi.pole.tapsustus-->
-        <!--</small>-->
-    <!--</h2>-->
+<!--<h2 class="col-md-4 col-md-offset-4" th:text="#{tulemusi.pole}">-->
+<!--tulemusi.pole-->
+<!--<small th:text="#{tulemusi.pole.tapsustus}">-->
+<!--tulemusi.pole.tapsustus-->
+<!--</small>-->
+<!--</h2>-->
 
 <!--</div>-->
 

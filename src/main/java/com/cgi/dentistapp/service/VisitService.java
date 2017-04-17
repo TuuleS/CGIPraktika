@@ -25,16 +25,25 @@ public class VisitService {
         visitDao.create(visit);
     }
 
+    /**
+     * @return a list of all visits
+     */
     public List<VisitEntity> listVisits() {
         return visitDao.getAllVisits();
     }
 
+
+    /**
+     * @param query
+     * @return a list of visits that match the given query
+     */
     public List<VisitEntity> listVisits(SearchQueryDTO query) {
         List<VisitEntity> allres = visitDao.getAllVisits();
         List<VisitEntity> actualres = new ArrayList<>();
 
         for (VisitEntity res : allres) {
 
+            // Calculates the Levenshtein distance between the given doctor's name and the name in the query
             int lev1 = distance(res.getDentistName().toLowerCase(), query.getDentistName().toLowerCase());
             int lev2 = distance(res.getGpName().toLowerCase(), query.getDentistName().toLowerCase());
 
@@ -46,7 +55,9 @@ public class VisitService {
     }
 
     /**
-     * Calculates the Levenshtein distance between two strings. If it's small enough, they are similar.
+     * Calculates the Levenshtein distance between two strings. If it's small enough, they are similar,
+     * meaning that the user probably made a typo when typing the name.
+     * <p>
      * Code taken from https://rosettacode.org/wiki/Levenshtein_distance#Java
      *
      * @param a - the first string to be compared

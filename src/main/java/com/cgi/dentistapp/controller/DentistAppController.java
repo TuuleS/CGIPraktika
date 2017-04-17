@@ -32,9 +32,7 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     }
 
     @GetMapping("/")
-    public String showRegisterForm(VisitDTO visitDTO, Model model) {
-        List<String> gps = Arrays.asList("H. Mets", "K. Apsas", "M. Elo Nid");
-        model.addAttribute("gps", gps);
+    public String showRegisterForm(VisitDTO visitDTO) {
         return "form";
     }
 
@@ -62,14 +60,12 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     }
 
     @PostMapping("/search")
-    public String doTheSearch(@Valid SearchQueryDTO query, BindingResult bindingResult, Model model){
+    public String doTheSearch(@Valid SearchQueryDTO query, BindingResult bindingResult, Model model) {
         model.addAttribute("query", query);
         List<VisitEntity> results = visitService.listVisits(query);
         model.addAttribute("results", results);
         return "search";
     }
-
-
 
 
 }
